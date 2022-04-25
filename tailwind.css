@@ -1,0 +1,41 @@
+@font-face { font-family: Futura; font-style: normal; font-weight: 400; font-display: swap; src: url(./assets/FuturaStd-Book.woff2) format('woff2'); }
+@font-face { font-family: Futura; font-style: normal; font-weight: 500; font-display: swap; src: url(./assets/FuturaStd-Medium.woff2) format('woff2'); }
+@font-face { font-family: Futura; font-style: normal; font-weight: 700; font-display: swap; src: url(./assets/FuturaStd-Bold.woff2) format('woff2'); }
+
+@media ( max-width: 400px ) { html { font-size: 4vw } }
+@media ( min-width: 1281px ) { html { font-size: 1.25vw } }
+@media ( min-width: 1600px ) { html { font-size: 20px } }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	html { @apply scroll-smooth }
+}
+
+@layer utilities {
+	.bg-img-1 { background-image: url(./assets/bg1.jpg) }
+	.bg-img-2 { background-image: url(./assets/bg2.jpg) }
+}
+
+[data-effect=fade-up] { @apply translate-y-24 opacity-0 transition duration-1000 }
+[data-effect=fade-left] { @apply translate-x-24 opacity-0 transition duration-1000 }
+[data-effect=fade-right] { @apply -translate-x-24 opacity-0 transition duration-1000 }
+[data-effect=zoom-in] { @apply scale-75 opacity-0 transition duration-1000 }
+[data-effect=fade-up].active,
+[data-effect=fade-left].active,
+[data-effect=fade-right].active,
+[data-effect=zoom-in].active { @apply opacity-100 translate-x-0 translate-y-0 scale-100 }
+[data-effect=draw1] { stroke-dasharray:1636.1826 }
+[data-effect=draw1].active { animation: draw1 5s linear }
+[data-effect=draw2] { stroke-dasharray:1524.5968 }
+[data-effect=draw2].active { animation: draw2 5s linear }
+@keyframes draw1 {
+	from { stroke-dashoffset: 1636.1826 }
+	to { stroke-dashoffset: 0 }
+}
+@keyframes draw2 {
+	from { stroke-dashoffset: 1524.5968 }
+	to { stroke-dashoffset: 0 }
+}
